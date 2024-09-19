@@ -9,9 +9,6 @@ This repo offers a streamlined setup for Kubernetes, Symfony, Svelte, and Postgr
 .
 ├── backend
 │   ├── dev
-│   │   ├── bin                 # symfony utils
-│   │   │   ├── composer.phar
-│   │   │   └── symfony
 │   │   ├── symfony             # symfony app
 │   │   │   └── [...]
 │   │   ├── Dockerfile          # docker image for development
