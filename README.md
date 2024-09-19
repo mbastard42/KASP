@@ -1,7 +1,7 @@
-# KSSP | Kubernetes Svelte Symphony PostgreSQL
+# [ KSSP ] Kubernetes Svelte Symphony PostgreSQL
 
 Accelerate your web development with this ready-to-use development environment.
-This repo offers a streamlined setup for Kubernetes with 3 components; Symfony, Svelte, and PostgreSQL, along with a CI/CD pipeline to ensure efficient development and deployment.
+This repository offers a complete solution for Kubernetes, integrating Symfony, Svelte, and PostgreSQL. A streamlined CI/CD pipeline ensures smooth development and deployment processes."
 
 ## Project structure
 
@@ -16,7 +16,7 @@ This repo offers a streamlined setup for Kubernetes with 3 components; Symfony, 
 │   │   └── Makefile            # rules to develop the backend as a standalone component
 │   ├── backend-config.yaml     # |
 │   ├── backend-secret.yaml     # | k8s deployment files
-│   ├── backend.yaml            # | k8s
+│   ├── backend.yaml            # |
 │   ├── Dockerfile              # docker image for deployment
 │   └── Makefile                # rules to test, build and push deployment image on DockerHub
 ├── database
@@ -50,9 +50,9 @@ This repo offers a streamlined setup for Kubernetes with 3 components; Symfony, 
 
 ## Environments & Secrets
 
-`.env` files in the `dev/` directory define variables **for development purposes only**. They should use the same labels as `{component}-secret.yaml` files but with simple values. These files can be safely pushed to the repository.
+`.env` files in the `dev/` directory define variables **for development purposes only**. They should use the same labels as `{frontend|backend|database}-secret.yaml` files but with simple values. These files can be safely pushed to the repository.
 
-`data:` labels in `{component}-secret.yaml` files should remain empty. These variables can be added using GitHub Actions, providing environment variables without appearing in the repository.
+`data:` labels in `{frontend|backend|database}-secret.yaml` files should remain empty. These variables can be added using GitHub Actions, providing environment variables without appearing in the repository.
 
 ## Makefiles
 
@@ -67,7 +67,8 @@ build:
 	docker buildx build -t $(NAME) .
 
 run: build
-	docker run --name $(NAME) -v ./{svelte|symfony}:/app -p port:port -it $(NAME) # no volume for postgresql to avoid chown conflicts
+	docker run --name $(NAME) -v ./{svelte|symfony}:/app -p port:port -it $(NAME)
+    # no volume for postgresql to avoid chown conflicts
 
 stop:
 	docker stop $(NAME)
@@ -87,3 +88,8 @@ fclean: clean
 
 ### ./Makefile
 
+## Development
+
+## Deployment
+
+## CI/CD Pipeline
