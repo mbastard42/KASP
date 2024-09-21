@@ -61,32 +61,38 @@ This repository offers a complete solution for Kubernetes, integrating Symfony, 
 `Makefiles` in the `dev/` directory provide rules for managing Docker containers to **develop components as standalone entities**. A volume is used to synchronize changes between the host and the container. **This Makefiles must be executed from within the `dev/` directory** to ensure correct volume mounting.
 
 ```Makefile
+MAKEFLAGS := --silent
 NAME := {frontend|backend|database}-standalone
 
 build:
-	docker buildx build -t $(NAME) .
+	echo "[MAKE] building $(NAME)" && docker buildx build -t $(NAME) . || echo "[MAKE] skip"
 
 run: build
-	docker run --name $(NAME) -v ./{svelte|symfony}:/app -p port:port -it $(NAME)
-    # no volume for postgresql to avoid chown conflicts
+	echo "[MAKE] running $(NAME)" && docker run --name $(NAME) -p port:port -it $(NAME) || echo "[MAKE] skip"
 
 stop:
-	docker stop $(NAME)
+	echo "[MAKE] stopping $(NAME)" && docker stop $(NAME) 2>/dev/null || echo "[MAKE] skip"
 
 clean: stop
-	docker rm $(NAME)
+	echo "[MAKE] removing $(NAME)" && docker rm $(NAME) 2>/dev/null || echo "[MAKE] skip"
 
 re: clean run
 
 fclean: clean
-	docker image rm $(NAME)
+	echo "[MAKE] removing $(NAME)'s image" && docker image rm $(NAME) 2>/dev/null || echo "[MAKE] skip"
 
 .PHONY: build run stop clean re fclean
 ```
 
 ### ./*/Makefiles
 
+```Makefile
+```
+
 ### ./Makefile
+
+```Makefile
+```
 
 ## Development
 

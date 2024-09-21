@@ -1,20 +1,21 @@
+MAKEFLAGS := --silent
 NAME := backend-standalone
 
 build:
-	docker buildx build -t $(NAME) .
+	echo "[MAKE] building $(NAME)" && docker buildx build -t $(NAME) . || echo "[MAKE] skip"
 
 run: build
-	docker run --name $(NAME) -v ./symfony:/app -p 8000:8000 -it $(NAME)
+	echo "[MAKE] running $(NAME)" && docker run --name $(NAME) -p 8000:8000 -it $(NAME) || echo "[MAKE] skip"
 
 stop:
-	docker stop $(NAME)
+	echo "[MAKE] stopping $(NAME)" && docker stop $(NAME) 2>/dev/null || echo "[MAKE] skip"
 
 clean: stop
-	docker rm $(NAME)
+	echo "[MAKE] removing $(NAME)" && docker rm $(NAME) 2>/dev/null || echo "[MAKE] skip"
 
 re: clean run
 
 fclean: clean
-	docker image rm $(NAME)
+	echo "[MAKE] removing $(NAME)'s image" && docker image rm $(NAME) 2>/dev/null || echo "[MAKE] skip"
 
 .PHONY: build run stop clean re fclean

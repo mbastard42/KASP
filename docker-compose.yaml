@@ -47,4 +47,6 @@ services:
       - ./database/dev/.env
     networks:
       - network
+    ports:
+      - "5432:5432"
     restart: on-failure

@@ -7,4 +7,4 @@ RUN chown -R postgres .
 RUN chmod -R 0700 .
 USER postgres
 
-ENTRYPOINT ["postgres", "-p", "5432"]
+ENTRYPOINT ["./launch.sh"]
