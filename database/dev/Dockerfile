@@ -5,11 +5,12 @@ WORKDIR /var/lib/postgresql/data/
 USER postgres
 RUN initdb
 
-USER root
-COPY ./server .
+COPY ./confs .
+COPY ./scripts /docker-entrypoint-initdb.d
 
+USER root
 RUN chown -R postgres .
 RUN chmod -R 0700 .
 USER postgres
 
-ENTRYPOINT ["./launch.sh"]
+EXPOSE 5432

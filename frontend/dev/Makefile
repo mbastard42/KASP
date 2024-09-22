@@ -5,7 +5,7 @@ build:
 	echo "[MAKE] building $(NAME)" && docker buildx build -t $(NAME) . || echo "[MAKE] skip"
 
 run: build
-	echo "[MAKE] running $(NAME)" && docker run --name $(NAME) -p 8000:8000 -it $(NAME) || echo "[MAKE] skip"
+	echo "[MAKE] running $(NAME)" && docker run --name $(NAME) -p 7000:5173 -it $(NAME) || echo "[MAKE] skip"
 
 stop:
 	echo "[MAKE] stopping $(NAME)" && docker stop $(NAME) 2>/dev/null || echo "[MAKE] skip"

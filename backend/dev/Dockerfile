@@ -8,6 +8,7 @@ RUN apt install -y \
         git
 
 RUN useradd symfony -m
+RUN chown -R symfony:symfony .
 USER symfony
 
 RUN ./tools/composer.phar install
