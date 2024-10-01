@@ -17,6 +17,8 @@ services:
     build: ./frontend/dev/
     env_file:
       - ./frontend/dev/.env
+    volumes:
+      - ./frontend/dev/svelte/:/app
     depends_on:
       - backend
     networks:
@@ -31,6 +33,8 @@ services:
     build: ./backend/dev/
     env_file:
       - ./backend/dev/.env
+    volumes:
+      - ./backend/dev/symfony:/app
     depends_on:
       - database
     networks:
@@ -48,5 +52,18 @@ services:
     networks:
       - network
     ports:
-      - "9000:5432"
+      - "5432:5432"
+    restart: on-failure
+
+  pgadmin:
+
+    container_name: pgadmin-development
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    networks:
+      - network
+    ports:
+      - "9000:80"
     restart: on-failure

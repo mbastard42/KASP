@@ -1,7 +1,7 @@
 # [ KSSP ] Kubernetes Svelte Symphony PostgreSQL
 
 Accelerate your web development with this ready-to-use development environment.
-This repository offers a complete solution for Kubernetes, integrating Symfony, Svelte, and PostgreSQL. A streamlined CI/CD pipeline ensures smooth development and deployment processes."
+This repository offers a complete solution for Kubernetes, integrating Symfony (API Platform), Svelte, and PostgreSQL.
 
 ## Project structure
 
@@ -58,7 +58,7 @@ This repository offers a complete solution for Kubernetes, integrating Symfony, 
 
 ### ./*/dev/Makefiles
 
-`Makefiles` in the `dev/` directory provide rules for managing Docker containers to **develop components as standalone entities**. A volume is used to synchronize changes between the host and the container. **This Makefiles must be executed from within the `dev/` directory** to ensure correct volume mounting.
+`Makefiles` in the `dev/` directory provide rules for managing Docker containers to **develop components as standalone entities**. A volume is used to synchronize changes between the host and the container.
 
 ```Makefile
 MAKEFLAGS := --silent

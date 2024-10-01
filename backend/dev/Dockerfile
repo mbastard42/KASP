@@ -1,16 +1,14 @@
 FROM php:8.3
 
-WORKDIR /app
-COPY ./symfony .
-
 RUN apt update -y && apt upgrade -y
 RUN apt install -y \
-        git
+        git \
+        zip
 
-RUN useradd symfony -m
-RUN chown -R symfony:symfony .
-USER symfony
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
+WORKDIR /app
+COPY ./symfony .
 RUN ./tools/composer.phar install
 
 EXPOSE 8000
