@@ -1,16 +1,14 @@
 FROM postgres:latest
 
-WORKDIR /var/lib/postgresql/data/
+WORKDIR /var/lib/postgresql/
 
-USER postgres
-RUN initdb
-
+COPY ./scripts/ /docker-entrypoint-initdb.d/
 COPY ./confs .
-COPY ./scripts /docker-entrypoint-initdb.d
 
 USER root
-RUN chown -R postgres .
-RUN chmod -R 0700 .
+RUN chown -R postgres:postgres /var/lib/postgresql/ /docker-entrypoint-initdb.d/ && \
+    chmod -R 0700 /var/lib/postgresql/ /docker-entrypoint-initdb.d/
+
 USER postgres
 
 EXPOSE 5432

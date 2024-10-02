@@ -13,7 +13,7 @@ services:
 
   frontend:
 
-    container_name: frontend-development
+    container_name: frontend-dev
     build: ./frontend/dev/
     env_file:
       - ./frontend/dev/.env
@@ -29,7 +29,7 @@ services:
 
   backend:
 
-    container_name: backend-development
+    container_name: backend-dev
     build: ./backend/dev/
     env_file:
       - ./backend/dev/.env
@@ -45,7 +45,7 @@ services:
 
   database:
 
-    container_name: database-development
+    container_name: database-dev
     build: ./database/dev/
     env_file:
       - ./database/dev/.env
@@ -57,11 +57,11 @@ services:
 
   pgadmin:
 
-    container_name: pgadmin-development
+    container_name: pgadmin-dev
     image: dpage/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: root
+      PGADMIN_DEFAULT_PASSWORD: password
     networks:
       - network
     ports:

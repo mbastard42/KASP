@@ -1,5 +1,5 @@
 MAKEFLAGS := --silent
-NAME := frontend-standalone
+NAME := frontend-std
 
 build:
 	echo "[MAKE] building $(NAME)" && docker buildx build -t $(NAME) . || echo "[MAKE] skip"
