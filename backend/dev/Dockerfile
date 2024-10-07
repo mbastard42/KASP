@@ -9,7 +9,6 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 
 WORKDIR /app
 COPY ./symfony .
-RUN ./tools/composer.phar install
 
 EXPOSE 8000
-ENTRYPOINT ["./tools/symfony", "server:start"]
+ENTRYPOINT ["sh", "-c", "./tools/composer.phar install && ./tools/symfony server:start"]

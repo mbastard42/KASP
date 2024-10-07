@@ -1,7 +1,7 @@
 # [ KSSP ] Kubernetes Svelte Symphony PostgreSQL
 
 Accelerate your web development with this ready-to-use development environment.
-This repository offers a complete solution for Kubernetes, integrating Symfony (API Platform), Svelte, and PostgreSQL.
+This repository offers a complete solution for Kubernetes, integrating Symfony, Svelte, and PostgreSQL.
 
 ## Project structure
 
@@ -68,7 +68,8 @@ build:
 	echo "[MAKE] building $(NAME)" && docker buildx build -t $(NAME) . || echo "[MAKE] skip"
 
 run: build
-	echo "[MAKE] running $(NAME)" && docker run --name $(NAME) -p port:port -it $(NAME) || echo "[MAKE] skip"
+	echo "[MAKE] running $(NAME)" && docker run --name $(NAME) -p port:port -v src:dst -it $(NAME) || echo "[MAKE] skip"
+#	no volume mounting for the database component to avoid permission conflicts
 
 stop:
 	echo "[MAKE] stopping $(NAME)" && docker stop $(NAME) 2>/dev/null || echo "[MAKE] skip"
