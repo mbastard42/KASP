@@ -1,8 +1,12 @@
 networks:
 
-  network:
+  frontend-backend:
     driver: bridge
-  
+  backend-database:
+    driver: bridge
+  database:
+    driver: bridge
+
 volumes:
 
   backend:
@@ -20,7 +24,7 @@ services:
     depends_on:
       - backend
     networks:
-      - network
+      - frontend-backend
     ports:
       - "5173:5173"
     restart: on-failure
@@ -34,7 +38,8 @@ services:
     depends_on:
       - database
     networks:
-      - network
+      - frontend-backend
+      - backend-database
     ports:
       - "8000:8000"
     restart: on-failure
@@ -46,7 +51,8 @@ services:
     env_file:
       - ./database/dev/.env
     networks:
-      - network
+      - backend-database
+      - database
     ports:
       - "5432:5432"
     restart: on-failure
@@ -59,7 +65,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: password
     networks:
-      - network
+      - database
     ports:
       - "9000:80"
     restart: on-failure
