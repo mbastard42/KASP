@@ -1,9 +1,8 @@
-FROM postgres:latest
+FROM postgres:17.0-alpine
 
 WORKDIR /var/lib/postgresql/
 
 COPY ./scripts/ /docker-entrypoint-initdb.d/
-COPY ./confs .
 
 USER root
 RUN chown -R postgres:postgres /var/lib/postgresql/ /docker-entrypoint-initdb.d/ && \

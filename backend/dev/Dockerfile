@@ -1,9 +1,14 @@
-FROM php:8.3
+FROM php:8.2-alpine
 
-RUN apt update -y && apt upgrade -y
-RUN apt install -y \
+RUN apk add --no-cache \
+        bash \
         git \
-        zip
+        zip \ 
+        postgresql-dev
+
+RUN docker-php-ext-install pdo pdo_pgsql
+
+COPY ./confs/ /usr/local/etc/php/
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 

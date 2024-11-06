@@ -44,7 +44,7 @@ This repository offers a complete solution for Kubernetes, integrating Symfony, 
 │   ├── Dockerfile              # docker image for deployment
 │   └── Makefile                # rules to test, build and push deployment image on DockerHub
 ├── README.md
-├── compose.yaml				# docker cluster for development
+├── compose.yaml                # docker cluster for development
 └── Makefile                    # rules to automate the deployment process
 ```
 
