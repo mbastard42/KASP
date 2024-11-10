@@ -16,4 +16,4 @@ WORKDIR /app
 COPY ./symfony .
 
 EXPOSE 8000
-ENTRYPOINT ["sh", "-c", "./tools/composer.phar install && ./tools/symfony server:start"]
+ENTRYPOINT ["sh", "-c", "./tools/composer.phar install && php bin/console d:d:c && php bin/console d:m:m --no-interaction && ./tools/symfony server:start"]

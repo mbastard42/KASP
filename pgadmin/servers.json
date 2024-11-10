@@ -1,0 +1,13 @@
+{
+    "Servers": {
+        "1": {
+            "Name": "KSSP",
+            "Group": "Servers",
+            "Port": 5432,
+            "Username": "postgres",
+            "Host": "database-dev",
+            "SSLMode": "prefer",
+            "MaintenanceDB": "kssp"
+        }
+    }
+}

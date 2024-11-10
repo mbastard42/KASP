@@ -8,41 +8,41 @@ This repository offers a complete solution for Kubernetes, integrating Symfony, 
 ```bash
 .
 ├── backend
-│   ├── dev
-│   │   ├── symfony             # symfony app
-│   │   │   └── [...]
-│   │   ├── Dockerfile          # docker image for development
-│   │   ├── .env                # development environment variables
-│   │   └── Makefile            # rules to develop the backend as a standalone component
-│   ├── backend-config.yaml     # |
-│   ├── backend-secret.yaml     # | k8s deployment files
-│   ├── backend.yaml            # |
-│   ├── Dockerfile              # docker image for deployment
-│   └── Makefile                # rules to test, build and push deployment image on DockerHub
+│   ├── dev
+│   │   ├── symfony             # symfony app
+│   │   │   └── [...]
+│   │   ├── Dockerfile          # docker image for development
+│   │   ├── .env                # development environment variables
+│   │   └── Makefile            # rules to develop the backend as a standalone component
+│   ├── backend-config.yaml     # |
+│   ├── backend-secret.yaml     # | k8s deployment files
+│   ├── backend.yaml            # |
+│   ├── Dockerfile              # docker image for deployment
+│   └── Makefile                # rules to test, build and push deployment image on DockerHub
 ├── database
-│   ├── dev
-│   │   ├── server              # postgresql server config
-│   │   │   └── [...]
-│   │   ├── Dockerfile          # docker image for development
-│   │   ├── .env                # development environment variables
-│   │   └── Makefile            # rules to develop the database as a standalone component
-│   ├── database-config.yaml    # |
-│   ├── database-secret.yaml    # | k8s deployment files
-│   ├── database.yaml           # |
-│   ├── Dockerfile              # docker image for deployment
-│   └── Makefile                # rules to test, build and push deployment image on DockerHub
+│   ├── dev
+│   │   ├── server              # postgresql server config
+│   │   │   └── [...]
+│   │   ├── Dockerfile          # docker image for development
+│   │   ├── .env                # development environment variables
+│   │   └── Makefile            # rules to develop the database as a standalone component
+│   ├── database-config.yaml    # |
+│   ├── database-secret.yaml    # | k8s deployment files
+│   ├── database.yaml           # |
+│   ├── Dockerfile              # docker image for deployment
+│   └── Makefile                # rules to test, build and push deployment image on DockerHub
 ├── frontend
-│   ├── dev
-│   │   ├── svelte              # svelte app
-│   │   │   └── [...]
-│   │   ├── Dockerfile          # docker image for development
-│   │   ├── .env                # development environment variables
-│   │   └── Makefile            # rules to develop the frontend as a standalone component
-│   ├── frontend-config.yaml    # |
-│   ├── frontend-secret.yaml    # | k8s deployment files
-│   ├── frontend.yaml           # |
-│   ├── Dockerfile              # docker image for deployment
-│   └── Makefile                # rules to test, build and push deployment image on DockerHub
+│   ├── dev
+│   │   ├── svelte              # svelte app
+│   │   │   └── [...]
+│   │   ├── Dockerfile          # docker image for development
+│   │   ├── .env                # development environment variables
+│   │   └── Makefile            # rules to develop the frontend as a standalone component
+│   ├── frontend-config.yaml    # |
+│   ├── frontend-secret.yaml    # | k8s deployment files
+│   ├── frontend.yaml           # |
+│   ├── Dockerfile              # docker image for deployment
+│   └── Makefile                # rules to test, build and push deployment image on DockerHub
 ├── README.md
 ├── compose.yaml                # docker cluster for development
 └── Makefile                    # rules to automate the deployment process
