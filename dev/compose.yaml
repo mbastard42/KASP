@@ -18,9 +18,9 @@ services:
   frontend:
 
     container_name: frontend-dev
-    build: ./frontend/dev/
+    build: ./svelte/
     volumes:
-      - ./frontend/dev/svelte/:/app
+      - ./svelte/:/app
     depends_on:
       - backend
     networks:
@@ -32,9 +32,9 @@ services:
   backend:
 
     container_name: backend-dev
-    build: ./backend/dev/
+    build: ./symfony/
     volumes:
-      - ./backend/dev/symfony:/app
+      - ./symfony/:/app
     depends_on:
       - database
     networks:
@@ -47,9 +47,9 @@ services:
   database:
 
     container_name: database-dev
-    build: ./database/dev/
-    env_file:
-      - ./database/dev/.env
+    build: ./postgres/
+    environment:
+      POSTGRES_PASSWORD: password
     networks:
       - backend-database
       - database
