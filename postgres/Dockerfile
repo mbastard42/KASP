@@ -1,4 +1,4 @@
-FROM postgres:17.0-alpine
+FROM postgres:17.0-alpine AS build
 
 WORKDIR /var/lib/postgresql/
 

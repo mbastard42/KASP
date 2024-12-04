@@ -1,9 +1,9 @@
-FROM php:8.2-alpine
+FROM php:8.2-alpine AS build
 
 RUN apk add --no-cache \
         bash \
         git \
-        zip \ 
+        zip \
         postgresql-dev
 
 RUN docker-php-ext-install pdo pdo_pgsql
